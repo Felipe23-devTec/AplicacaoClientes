@@ -16,6 +16,8 @@ namespace AplicacaoClientes
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            // Configuração do log4net
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }
