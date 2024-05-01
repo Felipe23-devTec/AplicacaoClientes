@@ -1,0 +1,35 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="height: 100vh; background-color: #f4f4f5;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #295097; ">
+        <div class="container">
+            <div class="navbar-header">
+
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>Tese</li>
+                    <li>dsf</li>
+                    <li>fsdf</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content mt-5">
+        @RenderBody()
+       
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

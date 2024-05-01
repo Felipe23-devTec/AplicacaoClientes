@@ -19,12 +19,18 @@ namespace AplicacaoClientes
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
+                      "~/Scripts/datatable/jquery.dataTables.min.js",
+                      "~/Scripts/datatable/jquery.dataTables.bootstrap4.min.js"));
+
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
-
+            bundles.Add(new ScriptBundle("~/bundles/Clientes").Include(
+                      "~/Scripts/pages/home/Cliente.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/dataTables.min.css"));
         }
     }
 }
