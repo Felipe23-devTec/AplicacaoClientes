@@ -7,43 +7,48 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AplicacaoClientes.Repository.Repository;
 
 namespace AplicacaoClientes.Controllers
 {
     public class HomeController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ActionResult Index()
         {
-            ConnectionStringSettings conn = System.Configuration.ConfigurationManager.ConnectionStrings["BancoDeDados"];
-            
-            SqlCommand comando = new SqlCommand();
-            SqlConnection conexao = new SqlConnection(conn.ConnectionString);
+            //ConnectionStringSettings conn = System.Configuration.ConfigurationManager.ConnectionStrings["BancoDeDados"];
 
-            conexao.Open();
-            try
-            {
-                comando.Connection = conexao;
-                comando.CommandType = System.Data.CommandType.StoredProcedure;
-                comando.CommandText = "SelectClientes";
+            //SqlCommand comando = new SqlCommand();
+            //SqlConnection conexao = new SqlConnection(conn.ConnectionString);
 
-                SqlDataAdapter adapter = new SqlDataAdapter(comando);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+            //conexao.Open();
+            //try
+            //{
+            //    comando.Connection = conexao;
+            //    comando.CommandType = System.Data.CommandType.StoredProcedure;
+            //    comando.CommandText = "SelectClientes";
 
-                // Exiba os resultados
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    Console.WriteLine(row["Nome"]);
-                    Console.WriteLine(row["IdPedido"]);
-                }
-            }
-            catch (Exception ex)
-            {
+            //    SqlDataAdapter adapter = new SqlDataAdapter(comando);
+            //    DataTable dataTable = new DataTable();
+            //    adapter.Fill(dataTable);
 
-                throw new Exception(ex.Message);
-            }
-            finally { conexao.Close(); }
+            //    // Exiba os resultados
+            //    foreach (DataRow row in dataTable.Rows)
+            //    {
+            //        Console.WriteLine(row["Nome"]);
+            //        Console.WriteLine(row["IdPedido"]);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw new Exception(ex.Message);
+            //}
+            //finally { conexao.Close(); }
+            ClienteRepository clienteRepository = new ClienteRepository();
+            var clientes = clienteRepository.ConsultarClientes();
+
             log.Info("Mensagem de informação no método Index.");
             return View();
         }
