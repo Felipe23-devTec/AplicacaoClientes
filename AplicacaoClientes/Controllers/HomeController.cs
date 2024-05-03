@@ -14,40 +14,15 @@ namespace AplicacaoClientes.Controllers
     public class HomeController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private readonly IClienteRepository _clienteRepository;
+        public HomeController(IClienteRepository clienteRepository)
+        {
+            _clienteRepository = clienteRepository;
+        }
         public ActionResult Index()
         {
-            //ConnectionStringSettings conn = System.Configuration.ConfigurationManager.ConnectionStrings["BancoDeDados"];
-
-            //SqlCommand comando = new SqlCommand();
-            //SqlConnection conexao = new SqlConnection(conn.ConnectionString);
-
-            //conexao.Open();
-            //try
-            //{
-            //    comando.Connection = conexao;
-            //    comando.CommandType = System.Data.CommandType.StoredProcedure;
-            //    comando.CommandText = "SelectClientes";
-
-            //    SqlDataAdapter adapter = new SqlDataAdapter(comando);
-            //    DataTable dataTable = new DataTable();
-            //    adapter.Fill(dataTable);
-
-            //    // Exiba os resultados
-            //    foreach (DataRow row in dataTable.Rows)
-            //    {
-            //        Console.WriteLine(row["Nome"]);
-            //        Console.WriteLine(row["IdPedido"]);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    throw new Exception(ex.Message);
-            //}
-            //finally { conexao.Close(); }
-            ClienteRepository clienteRepository = new ClienteRepository();
-            var clientes = clienteRepository.ConsultarClientes();
+       
+            var clientes = _clienteRepository.ConsultarClientes();
 
             log.Info("Mensagem de informação no método Index.");
             return View();

@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Padrao\DataAcess.cs" />
+    <Compile Include="Padrao\IDataAcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\IClienteRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

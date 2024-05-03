@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace AplicacaoClientes.Repository.Padrao
 {
-    public class DataAcess
+    public class DataAcess : IDataAcess
     {
         private string stringDeConexao
         {
