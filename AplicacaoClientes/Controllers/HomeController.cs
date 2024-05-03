@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AplicacaoClientes.Repository.Repository;
+using AplicacaoClientes.Helpers;
 
 namespace AplicacaoClientes.Controllers
 {
@@ -21,11 +22,22 @@ namespace AplicacaoClientes.Controllers
         }
         public ActionResult Index()
         {
-       
-            var clientes = _clienteRepository.ConsultarClientes();
 
             log.Info("Mensagem de informação no método Index.");
             return View();
+        }
+        [HttpPost]
+        public JsonResult Clientes()
+        {
+            var jsonTable = Json(new DataTableResult());
+            var clientes = _clienteRepository.ConsultarClientes();
+            jsonTable = Json(new DataTableResult
+            {
+                data = clientes,
+                recordsTotal = clientes.Count
+            });
+
+            return jsonTable;
         }
 
         public ActionResult About()
