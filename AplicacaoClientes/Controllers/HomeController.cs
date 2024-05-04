@@ -29,6 +29,7 @@ namespace AplicacaoClientes.Controllers
         [HttpPost]
         public JsonResult Clientes()
         {
+            var search = Request.Form["search[value]"].ToString();
             var jsonTable = Json(new DataTableResult());
             var clientes = _clienteRepository.ConsultarClientes();
             jsonTable = Json(new DataTableResult

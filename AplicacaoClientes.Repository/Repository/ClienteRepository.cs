@@ -19,17 +19,6 @@ namespace AplicacaoClientes.Repository.Repository
         {
             _dataAcess = dataAcess;
         }
-        private string stringDeConexao
-        {
-            get
-            {
-                ConnectionStringSettings conn = System.Configuration.ConfigurationManager.ConnectionStrings["BancoDeDados"];
-                if (conn != null)
-                    return conn.ConnectionString;
-                else
-                    return string.Empty;
-            }
-        }
         public List<Cliente> ConsultarClientes()
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();

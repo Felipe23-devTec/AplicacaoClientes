@@ -4,6 +4,23 @@
         "processing": true,
         "serverSide": true,
         "pageLength": 10,
+        "language": {
+            "lengthMenu": "Display _MENU_ resultados por pagina",
+            "zeroRecords": "Nenhum resultado encontrado!",
+            "info": "Showing _PAGE_ of _PAGES_",
+            "infoEmpty": "Atualmente",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Pesquisar Cliente:",
+            "searchPlaceholder": "Ex: Nome de cliente...",
+            "processing": "Processando...",
+            "paginate": {
+                "first": "First",
+                "last": "Last",
+                "next": "Next",
+                "previous": "Previous"
+            },
+            "charset": "utf-8"
+        },
         ajax: {
             url: "/Home/Clientes",
             type: 'POST',
@@ -14,10 +31,6 @@
             },
             dataSrc: function (json) {
                 if (!json) json = [];
-
-                //if (json.error != null) {
-                //    location.href = json.error;
-                //}
 
                 return json.data;
             },
@@ -33,10 +46,21 @@
         },
 
         columns: [
-            { data: 'Nome', title: 'Nome' },
-            { data: 'Email', title: 'Email' },
-            { data: 'Sexo', title: 'Sexo' },
-            { data: 'Status', title: 'Status' }
+            { data: 'Nome', title: 'Nome', className: "text-center" },
+            { data: 'Email', title: 'Email', className: "text-center" },
+            { data: 'Sexo', title: 'Sexo', className: "text-center" },
+            {
+                data: 'Status',
+                title: 'Status',
+                className: "text-center",
+                render: function (data, type, row) {
+                    if (data) {
+                        return '<span style="color:green; font-size: 30px">&#9679;</span>';
+                    } else {
+                        return '<span style="color:red; font-size: 30px">&#9679;</span>';
+                    }
+                }
+            }
 
         ],
     });
