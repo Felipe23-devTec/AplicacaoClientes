@@ -19,7 +19,7 @@ namespace AplicacaoClientes.Repository.Repository
         {
             _dataAcess = dataAcess;
         }
-        public List<Cliente> ConsultarClientes()
+        public List<Cliente> ConsultarClientes(string search, int start, int length)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
             DataSet ds = _dataAcess.Consultar("SelectClientes", parametros);
@@ -37,6 +37,33 @@ namespace AplicacaoClientes.Repository.Repository
 
 
             return clientes;
+        }
+        public ClientePaginado ConsultarClientesPaginado(string search, int start, int length)
+        {
+            List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
+         
+            
+            var dscont = _dataAcess.ConsultarQtd("QuantidadeClientes");
+            parametros.Add(new System.Data.SqlClient.SqlParameter("PageSize", length));
+            parametros.Add(new System.Data.SqlClient.SqlParameter("PageNumber", start));
+            parametros.Add(new System.Data.SqlClient.SqlParameter("SearchTerm", search));
+
+            DataSet ds = _dataAcess.Consultar("BuscarClientesPaginado", parametros);
+
+            
+            List<Cliente> clientes = new List<Cliente>();
+            
+            
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                Cliente cli = new Cliente();
+                cli.Nome = row.Field<string>("Nome");
+                cli.Email = row.Field<string>("Email");
+                cli.Sexo = row.Field<string>("Sexo");
+                cli.Status = row.Field<bool>("Status");
+                clientes.Add(cli);
+            }
+            return new ClientePaginado { Clientes = clientes, TotalRegistros = dscont };
         }
     }
 

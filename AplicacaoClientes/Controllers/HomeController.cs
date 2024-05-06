@@ -27,15 +27,15 @@ namespace AplicacaoClientes.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult Clientes()
+        public JsonResult Clientes(int start = 0, int length = 10)
         {
             var search = Request.Form["search[value]"].ToString();
             var jsonTable = Json(new DataTableResult());
-            var clientes = _clienteRepository.ConsultarClientes();
+            var clientes = _clienteRepository.ConsultarClientesPaginado(search,start, length);
             jsonTable = Json(new DataTableResult
             {
-                data = clientes,
-                recordsTotal = clientes.Count
+                data = clientes.Clientes,
+                recordsTotal = clientes.TotalRegistros
             });
 
             return jsonTable;

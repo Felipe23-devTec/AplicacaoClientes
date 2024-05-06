@@ -26,6 +26,12 @@ namespace AplicacaoClientes.Repository.Padrao
             
             conexao.Open();
             DataSet ds = new DataSet();
+            if(parametros.Count > 0)
+            {
+                foreach (var item in parametros)
+                    comando.Parameters.Add(item);
+            }
+            
 
             try
             {
@@ -44,6 +50,25 @@ namespace AplicacaoClientes.Repository.Padrao
             }
 
             return ds;
+        }
+
+        public int ConsultarQtd(string NomeProcedure)
+        {
+
+            SqlCommand comando = new SqlCommand();
+            SqlConnection conexao = new SqlConnection(stringDeConexao);
+
+            comando.Connection = conexao;
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = NomeProcedure;
+
+
+            conexao.Open();
+
+            int quantidade = (int)comando.ExecuteScalar();
+
+            return quantidade;
+
         }
     }
 }

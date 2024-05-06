@@ -54,7 +54,7 @@
                 title: 'Status',
                 className: "text-center",
                 render: function (data, type, row) {
-                    if (data) {
+                    if (data == true) {
                         return '<span style="color:green; font-size: 30px">&#9679;</span>';
                     } else {
                         return '<span style="color:red; font-size: 30px">&#9679;</span>';

@@ -11,5 +11,7 @@ namespace AplicacaoClientes.Repository.Padrao
     public interface IDataAcess
     {
         DataSet Consultar(string NomeProcedure, List<SqlParameter> parametros);
+
+        int ConsultarQtd(string NomeProcedure);
     }
 }

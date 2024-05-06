@@ -9,6 +9,7 @@ namespace AplicacaoClientes.Repository.Repository
 {
     public interface IClienteRepository
     {
-        List<Cliente> ConsultarClientes();
+        List<Cliente> ConsultarClientes(string search, int start, int length);
+        ClientePaginado ConsultarClientesPaginado(string search, int start, int length);
     }
 }
