@@ -29,10 +29,11 @@ namespace AplicacaoClientes.Repository.Padrao
             if(parametros.Count > 0)
             {
                 foreach (var item in parametros)
+                    
                     comando.Parameters.Add(item);
+                    
+                    
             }
-            
-
             try
             {
                 comando.Connection = conexao;
@@ -52,23 +53,30 @@ namespace AplicacaoClientes.Repository.Padrao
             return ds;
         }
 
-        public int ConsultarQtd(string NomeProcedure)
+        public int ConsultarQtd(string NomeProcedure, List<SqlParameter> parametros)
         {
-
             SqlCommand comando = new SqlCommand();
             SqlConnection conexao = new SqlConnection(stringDeConexao);
+            try
+            {
+                
+                if (parametros.Count > 0)
+                {
+                    foreach (var item in parametros)
+                        comando.Parameters.Add(item);
+                }
+                comando.Connection = conexao;
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.CommandText = NomeProcedure;
+                conexao.Open();
 
-            comando.Connection = conexao;
-            comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.CommandText = NomeProcedure;
-
-
-            conexao.Open();
-
-            int quantidade = (int)comando.ExecuteScalar();
-
-            return quantidade;
-
+                int quantidade = (int)comando.ExecuteScalar();
+                return quantidade;
+            }
+            finally
+            {
+                conexao.Close();
+            }
         }
     }
 }

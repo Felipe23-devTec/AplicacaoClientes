@@ -12,6 +12,6 @@ namespace AplicacaoClientes.Repository.Padrao
     {
         DataSet Consultar(string NomeProcedure, List<SqlParameter> parametros);
 
-        int ConsultarQtd(string NomeProcedure);
+        int ConsultarQtd(string NomeProcedure, List<SqlParameter> parametros);
     }
 }
