@@ -287,6 +287,10 @@
       <Project>{f637b223-5111-47ec-afa8-5791364c11a8}</Project>
       <Name>AplicacaoClientes.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AplicacaoClientes.Services\AplicacaoClientes.Service.csproj">
+      <Project>{3cadb418-56d8-41ad-bc10-b13fe6a203df}</Project>
+      <Name>AplicacaoClientes.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

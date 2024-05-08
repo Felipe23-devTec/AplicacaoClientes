@@ -9,16 +9,17 @@ using System.Web;
 using System.Web.Mvc;
 using AplicacaoClientes.Repository.Repository;
 using AplicacaoClientes.Helpers;
+using AplicacaoClientes.Services.Service.Contract;
 
 namespace AplicacaoClientes.Controllers
 {
     public class HomeController : Controller
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly IClienteRepository _clienteRepository;
-        public HomeController(IClienteRepository clienteRepository)
+        private readonly IClienteService _clienteService;
+        public HomeController(IClienteService clienteService)
         {
-            _clienteRepository = clienteRepository;
+            _clienteService = clienteService;
         }
         public ActionResult Index()
         {
@@ -31,7 +32,7 @@ namespace AplicacaoClientes.Controllers
         {
             var search = Request.Form["search[value]"].ToString();
             var jsonTable = Json(new DataTableResult());
-            var clientes = _clienteRepository.ConsultarClientesPaginado(search,start, length);
+            var clientes = _clienteService.ConsultarClientesPaginado(search,start, length);
             jsonTable = Json(new DataTableResult
             {
                 data = clientes.Clientes,

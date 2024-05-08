@@ -1,5 +1,7 @@
 using AplicacaoClientes.Repository.Padrao;
 using AplicacaoClientes.Repository.Repository;
+using AplicacaoClientes.Services.Service.Contract;
+using AplicacaoClientes.Services.Service.Implementacion;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using System;
@@ -30,8 +32,9 @@ namespace AplicacaoClientes
 
             container.Register<IDataAcess, DataAcess>();
             container.Register<IClienteRepository, ClienteRepository>();
+            container.Register<IClienteService, ClienteService>();
 
-            
+
             // Registre os controllers do MVC
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 
