@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="Helpers\DataTableResult.cs" />
     <Compile Include="Models\ClientePaged.cs" />
+    <Compile Include="Models\ModalClienteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +230,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lib\aspnetextended\aspnetextended.dialog.js" />
+    <Content Include="Scripts\lib\aspnetextended\aspnetextended.js" />
+    <Content Include="Scripts\lib\aspnetextended\aspnetextended.mensagens.js" />
+    <Content Include="Scripts\lib\aspnetextended\aspnetextended.util.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\pages\home\Cliente.js" />
     <Content Include="Web.config" />
@@ -246,6 +251,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutCliente.cshtml" />
+    <Content Include="Views\Home\ModalCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

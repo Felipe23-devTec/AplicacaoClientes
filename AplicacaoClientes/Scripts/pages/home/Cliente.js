@@ -26,7 +26,7 @@
             type: 'POST',
             data: function (d) {
                 return $.extend({}, d, {
-                    
+
                 });
             },
             dataSrc: function (json) {
@@ -41,7 +41,7 @@
             ],
             error: function (xhr, error, thrown) {
                 console.log('Erro ao recuperar os dados:', error); // Exibir o erro no console
-                console.log(xhr.responseText); 
+                console.log(xhr.responseText);
             }
         },
 
@@ -64,4 +64,24 @@
 
         ],
     });
+
+    $("#openModal").on("click", function () {
+        Dialog.show("Inserir Usuario", {
+            url: "/Home/InserirCliente",
+            type: "POST",
+            success: function (data) {
+                $('#modalDialogBody').html(data);
+            }
+        }, "", Dialog.DialogSizes.LARGE, function () {
+
+            $("#modalDialogFooter").empty();
+            $("#modalDialogFooter").append("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fechar</button>");
+
+        });
+    });
+
+    $("#salvarUser").on("click", function () {
+        alert("clicou")
+    });
+
 });

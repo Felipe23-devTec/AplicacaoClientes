@@ -3,14 +3,37 @@
     Layout = "~/Views/Shared/_LayoutCliente.cshtml";
 }
 <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<div>
+    <button type="button" style="display:block" id="openModal" class="btn btn-outline-primary">
+        Inserir Novo Cliente
+    </button>
+
+</div>
+
 <div id="divPrincipal" style="width: 90%;"
      url-cliente="@Url.Action("Clientes", "Home")">
     <div class="table-responsive">
         <table id="table" class="table text-nowrap table-striped table-bordered">
         </table>
     </div>
-    
+
+</div>
+<div class="modal fade" id="modalDialog" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header titulo-azul" style="font-size: 1.1rem;" id="modalDialogTitle">
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+            </div>
+            <div class="modal-body" id="modalDialogBody"></div>
+            <div class="modal-footer" id="modalDialogFooter"></div>
+        </div>
+
+    </div>
 </div>
 @Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/lib/aspnetextended/aspnetextended.dialog.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 @Scripts.Render("~/bundles/datatable")
 @Scripts.Render("~/bundles/Clientes")

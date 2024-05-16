@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using AplicacaoClientes.Repository.Repository;
 using AplicacaoClientes.Helpers;
 using AplicacaoClientes.Services.Service.Contract;
+using AplicacaoClientes.Models;
 
 namespace AplicacaoClientes.Controllers
 {
@@ -40,6 +41,12 @@ namespace AplicacaoClientes.Controllers
             });
 
             return jsonTable;
+        }
+        [HttpPost]
+        public ActionResult InserirCliente()
+        {
+            var model = new ModalClienteViewModel();
+            return PartialView("ModalCliente", model);
         }
 
         public ActionResult About()
