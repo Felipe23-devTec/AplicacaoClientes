@@ -75,13 +75,10 @@
         }, "", Dialog.DialogSizes.LARGE, function () {
 
             $("#modalDialogFooter").empty();
-            $("#modalDialogFooter").append("<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Fechar</button>");
+            $("#modalDialogFooter").append("<button type=\"button\" class=\"btn close btn-default\" data-dismiss=\"modal\">Fechar</button>");
 
         });
     });
 
-    $("#salvarUser").on("click", function () {
-        alert("clicou")
-    });
 
 });
