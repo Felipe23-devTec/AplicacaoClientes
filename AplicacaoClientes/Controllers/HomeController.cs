@@ -48,7 +48,27 @@ namespace AplicacaoClientes.Controllers
             var model = new ModalClienteViewModel();
             return PartialView("ModalCliente", model);
         }
+        [HttpPost]
+        public ActionResult SalvarUsuario(ModalClienteViewModel model)
+        { 
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    return Json(new { status = "success" });
+                }
+                catch (Exception ex)
+                {
 
+                    return Json(new { status = "Erro" });
+                }
+            }
+            else
+            {
+                return Json(new { status = "error", message = "Preenha todos os campos" });
+
+            }
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
