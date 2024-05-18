@@ -1,17 +1,22 @@
 ﻿@model AplicacaoClientes.Models.ModalClienteViewModel
+
+@{
+    //ViewData["Title"] = "Privacy Policy";
+    Layout = "";
+}
 <div class="modal-body mb-4 mt-2">
     <form id="form-insert-user" asp-action="SalvarUsuario" asp-controller="Home" method="post">
         <div class="form-group">
             <label asp-for="Nome">Nome</label>
-            <input asp-for="Nome" type="text" class="form-control" id="pwd" placeholder="Insira seu nome" required>
+            <input asp-for="Nome" name="Nome" type="text" class="form-control" id="nome" placeholder="Insira seu nome" required>
         </div>
         <div class="form-group">
             <label asp-for="Email">Email</label>
-            <input asp-for="Email" type="email" class="form-control" id="pwd" placeholder="Insira seu email" required>
+            <input asp-for="Email" name="Email" type="email" class="form-control" id="email" placeholder="Insira seu email" required>
         </div>
 
         <div style="display: flex; justify-content:center;">
-            <button id="salvarUser" type="submit" class="btn btn-success" style="width: 50%; margin-top: 15px;">SALVAR</button>
+            <button type="submit" class="btn btn-success" style="width: 50%; margin-top: 15px;">SALVAR</button>
         </div>
     </form>
 
