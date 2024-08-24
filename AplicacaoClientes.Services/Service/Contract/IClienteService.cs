@@ -10,5 +10,6 @@ namespace AplicacaoClientes.Services.Service.Contract
     public interface IClienteService
     {
         ClientePaginado ConsultarClientesPaginado(string search, int start, int length);
+        string InserirCliente(Cliente cliente);
     }
 }

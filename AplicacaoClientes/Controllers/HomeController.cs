@@ -11,6 +11,7 @@ using AplicacaoClientes.Repository.Repository;
 using AplicacaoClientes.Helpers;
 using AplicacaoClientes.Services.Service.Contract;
 using AplicacaoClientes.Models;
+using AplicacaoClientes.Domain.DML;
 
 namespace AplicacaoClientes.Controllers
 {
@@ -55,6 +56,11 @@ namespace AplicacaoClientes.Controllers
             {
                 try
                 {
+                    Cliente c = new Cliente();
+                    c.Nome = model.Nome;
+                    c.Email = model.Email;
+                    c.Sexo = "M";
+                    _clienteService.InserirCliente(c);
                     return Json(new { status = "success" });
                 }
                 catch (Exception ex)

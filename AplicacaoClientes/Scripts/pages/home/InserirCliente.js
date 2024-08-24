@@ -7,7 +7,7 @@
     $("#form-insert-user").unbind('submit').submit(function (e) {
         e.preventDefault();
         var formAction = $(this).attr("action");
-        var fdata = $(this).serialize();;
+        //var fdata = $(this).serialize();
 
         console.log("Dados codificados: " + fdata);
 
@@ -18,7 +18,11 @@
         var email = $("#email").val();
         console.log("Nome: " + nome);
         console.log("Email: " + email);
-       
+
+        var fdata = {
+            Nome: nome,
+            Email: email
+        };
         $.ajax({
             type: 'post',
             url: "/Home/SalvarUsuario",

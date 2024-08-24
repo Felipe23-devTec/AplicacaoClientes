@@ -11,5 +11,6 @@ namespace AplicacaoClientes.Repository.Repository
     {
         List<Cliente> ConsultarClientes(string search, int start, int length);
         ClientePaginado ConsultarClientesPaginado(string search, int start, int length);
+        string InserirCliente(Cliente cliente);
     }
 }

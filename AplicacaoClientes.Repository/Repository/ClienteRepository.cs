@@ -93,5 +93,33 @@ namespace AplicacaoClientes.Repository.Repository
 
             return new ClientePaginado { Clientes = clientes, TotalRegistros = totalRecords };
         }
+        public string InserirCliente(Cliente cliente)
+        {
+            try
+            {
+                List<SqlParameter> parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@Nome", cliente.Nome));
+                parametros.Add(new SqlParameter("@DataCadastro", DateTime.Now));
+                parametros.Add(new SqlParameter("@Email", cliente.Email));
+                parametros.Add(new SqlParameter("@Sexo", cliente.Sexo));
+                parametros.Add(new SqlParameter("@Status", 1));
+
+                SqlParameter outputParam = new SqlParameter("@Mensagem", SqlDbType.NVarChar, 250)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                parametros.Add(outputParam);
+                DataSet ds = _dataAcess.Consultar("InserirUsuario", parametros);
+
+                var msg = outputParam.Value.ToString();
+                return msg;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

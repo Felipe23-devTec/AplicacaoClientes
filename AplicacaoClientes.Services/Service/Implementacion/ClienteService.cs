@@ -23,5 +23,11 @@ namespace AplicacaoClientes.Services.Service.Implementacion
 
             return clientes;
         }
+
+        public string InserirCliente(Cliente cliente)
+        {
+            var msg = _clienteRepository.InserirCliente(cliente);
+            return msg;
+        }
     }
 }
